@@ -1,0 +1,5 @@
+numbers = list(map(int, input("Введите список чисел через пробел: ").split()))
+minimum = min(numbers)
+maximum = max(numbers)
+print(f"Минимальное значение: {minimum}")
+print(f"Максимальное значение: {maximum}")

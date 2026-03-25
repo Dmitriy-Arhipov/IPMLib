@@ -1,0 +1,21 @@
+import socket
+
+def scan_ports(host):
+    open_ports = []
+    for port in range(1, 1025):  # Сканируем порты с 1 по 1024
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)
+        result = sock.connect_ex((host, port))
+        if result == 0:
+            open_ports.append(port)
+        sock.close()
+
+    return open_ports
+
+if __name__ == "__main__":
+    target_host = input("Enter the host to scan for open ports: ")
+    open_ports = scan_ports(target_host)
+    if open_ports:
+        print(f"Open ports on {target_host}: {open_ports}")
+    else:
+        print(f"No open ports found on {target_host}.")
